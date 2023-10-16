@@ -1,7 +1,7 @@
 //importerar filer
 
 import Band from "./band.js";
-import Musician from "./musiker.js";
+import Musician from "./musician.js";
 import PromptSync from "prompt-sync";
 
 
@@ -26,30 +26,47 @@ Choice - `);
   switch (choice) {
 
 
-    case "1": {
+    case "1": 
       const band = new Band();
-      console.log(band)
-    }
-    
+      
+      const newBandName = prompt("What's the name of the band? ")
+      band.bandName = newBandName;
+
+      const newInfo = prompt("What country is the band from? ")
+      band.info = newInfo;
+
+      const newYear = prompt("What year was the band formed? ")
+      band.year = newYear;
+
+      const newSeparation = prompt("Did the band seperate? yes/no: ")
+      band.separation = newSeparation;
+
       break;
   
   
-    case "2": {
+    case "2": 
       const musician = new Musician();
-      console.log(musician)
-    }
+
+      const newName = prompt("What's the name of the musician? ")
+      musician.theName = newName;
+
+      const newInformation = prompt("What country is the musician from? ")
+      musician.someInfo = newInformation;
+
+
+    
     
       break;
 
-    case "3": {
+    case "3": 
 
-    }
+    
     
       break;
   
-    case "4": {
+    case "4": 
 
-    }
+    
     
       break;
     
