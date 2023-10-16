@@ -1,10 +1,4 @@
 
-
-//få if alternativen att loopa om de inte stämmer med inmatningen som förväntas
-
-  let run = true
-
-
 export default class Band {
 
   
@@ -13,8 +7,8 @@ export default class Band {
     this.bandName = bandName;
     this._info = info;
     this._year = year;
-    this._separation = separation; //true or false statement "yes or no"
-    this.members = members; // hitta en metod som gör att man kan lägga till flera medlemmar på en och samma gång 
+    this._separation = separation; 
+    this.members = members; 
     this.earlierMembers = earlierMembers;
   }
 
