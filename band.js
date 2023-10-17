@@ -1,30 +1,29 @@
 
+
+
+
 export default class Band {
 
   
 
-  constructor(bandName, info, year, separation) {
-    this.bandName = bandName;
-    this._info = info;
+  constructor(bandName, year, separation, members, instruments, earlierMembers) {
+    this._bandName = bandName;
     this._year = year;
     this._separation = separation; 
-    this.members = members; 
-    this.earlierMembers = earlierMembers;
+    this._members = members; //vill få flera medlemmar tillagda
+    this._instruments = instruments; //vill få flera instrument tillagda om det behövs
+    this._earlierMembers = earlierMembers; //true or false statement
+
+
   }
 
   
   
 
-  bandName() {
+  get bandName() {
     return this.bandName;
 
   }
-
-
-  get info() {
-    return this._info;
-  }
-
 
   get year() {
     return this._year;
@@ -35,16 +34,30 @@ export default class Band {
     return this._separation;
   }
 
+  get members() {
+    return this._members;
+  }
+   
 
-    
-  set info(newInfo) {
-    if (newInfo.length >= 4) {
-      this._info = newInfo;
+  get instruments() {
+    return this._instruments;
+  }
+
+
+  get earlierMembers() {
+    return this._earlierMembers;
+  }
+
+
+
+  set bandName(theirName) {
+    if (theirName.length >= 1) {
+      this._bandName = theirName;
     } else {
-      console.log("You must write at least 4 letters!")
-      
+      console.log("You didn't write anything!")
     }
   }
+
   
      
   set year(newYear) {
@@ -68,6 +81,48 @@ export default class Band {
       console.log("You must answer yes or no")
     }
   }
+
+  
+  set members(newMembers) {   
+    if (newMembers.length >= 1) {
+      this._members = newMembers;
+    } else {
+      console.log("You didn't write anything!")
+    }
+  }
+  
+
+  set instruments(newInstruments) {   
+    if (newInstruments.length >= 1) {
+      this._instrument = newInstruments;
+    } else {
+      console.log("You didn't write anything!")
+    }
+  }
+      
+  
+  set earlierMembers(oldMembers) {
+    if (oldMembers.length >= 1) {
+      this._earlierMembers = oldMembers;
+    } else {
+      console.log("You didn't write anything!")
+    }
+  }
+
+
+  bandInfo() {
+    return {
+      "bandName": this.bandName,
+      "info": this.info,
+      "year": this.year,
+      "separation": this.separation,
+      "members": this.members,
+      "instruments": this.instruments,
+      "earlierMembers": this.earlierMembers
+    };
+  }
+
+
 
 }
 

@@ -1,34 +1,103 @@
 
+
+
+
+
 export default class Musician {
   
     
   
-  constructor(theName, someInfo, age) {
-    this.theName = theName;
-    this._someInfo = someInfo;
+  constructor(theName, age, inBand, bandBefore, instrument) {
+    this._theName = theName;
     this._age = age;
-    this.inBand = "Slipknot"
-    this.bandBefore = "Junk Beer Kidnap Band"
-    this.instrument = "guitar"
+    this._inBand = inBand;
+    this._bandBefore = bandBefore;
+    this._instrument = instrument;
   }
 
-  theName() {
-    return this.theName;
+  get theName() {
+    return this._theName;
   }
   
-  get someInfo() {
-    return this._someInfo;
+  
+  get age() {
+    return this._age;
   }
 
-  set someInfo(newInformation) {
-    if (newInformation.length >= 4) {
-      this._someInfo = newInformation;
-    } else {
-      console.log("You must write at least 4 letters!")
-    }
-      
-      
+
+  get inBand() {
+    return this._inBand;
   }
+
+
+  get bandBefore() {
+    return this._bandBefore;
+  }
+
+
+  get instrument() {
+    return this._instrument;
+  }
+
+  set theName(newName) {
+    if (newName.length >= 1) {  
+      this._theName = newName;
+    } else {
+      console.log("You didn't write anything!")
+    }
+
+  }
+
+  
+  set age(newAge) {
+    if (newAge.length >= 1) {
+      this._age = newAge;
+    } else {
+      console.log("You didn't write anything!")
+    };
+  }
+
+
+  set inBand(newBand) {
+    if (newBand.length >= 1) {
+      this._inBand = newBand;
+    } else {
+      console.log("You didn't write anything!")
+    }
+  }
+
+
+  set bandBefore(oldBand) {
+    if (oldBand.length >= 1) {
+      this._bandBefore = oldBand;
+    } else {
+      console.log("You didn't write anything!")
+    }
+  }
+
+
+  set instrument(theirInstrument) {
+    if (theirInstrument.length >= 1) {
+      this._instrument = theirInstrument;
+    } else {
+      console.log("You didn't write anything!")
+    }
+  }
+
+
+
+  infoMusician() {
+    return {
+      "theName": this.theName,
+      "someInfo": this.someInfo,
+      "age": this.age,
+      "inBand": this.inBand,
+      "bandBefore": this.bandBefore,
+      "instrument": this.instrument
+    };
+  }
+
+
 
 }
 
