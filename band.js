@@ -10,9 +10,9 @@ export default class Band {
     this._bandName = bandName;
     this._year = year;
     this._separation = separation; 
-    this._members = members; //vill få flera medlemmar tillagda
-    this._instruments = instruments; //vill få flera instrument tillagda om det behövs
-    this._earlierMembers = earlierMembers; //true or false statement
+    this._members = members; 
+    this._instruments = instruments; 
+    this._earlierMembers = earlierMembers; 
 
 
   }
@@ -126,7 +126,7 @@ export default class Band {
 
 }
 
-  
+
 
 
 

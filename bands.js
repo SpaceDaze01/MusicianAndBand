@@ -26,6 +26,9 @@ export default class Bands {
       this.#saveBands.push(new Band(bandData[index].bandName, bandData[index].info, bandData[index].year, bandData[index].separation, bandData[index].members, bandData[index].instruments, bandData[index].earliermembers))
 
 
+
+      
+
     }
 
     

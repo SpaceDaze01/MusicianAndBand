@@ -66,6 +66,7 @@ Choice - `);
       musician.inBand = whatBand;
 
       const oldMemberOf = prompt("What bands were they a part of before? ")
+      musician.bandBefore = oldMemberOf;
     
       break;
 
