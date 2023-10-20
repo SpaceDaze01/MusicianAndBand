@@ -1,7 +1,7 @@
 import fs from "fs";
 import Band from "./band.js";
-
-
+import PromptSync from "prompt-sync";
+const prompt = PromptSync({ sigint: true })
 
 
 
@@ -41,12 +41,12 @@ export default class Bands {
 
   //läser in alla band
   #getBandInfo() {
-    const jsonString = fs.readFileSync("savebands.json");
+    const jsonString = fs.readFileSync("saveBands.json");
     const bandData = JSON.parse(jsonString);
     
 
-    for (let index = 0; index < bandData.length; index++) { //test
-      this.#savingBands.push(new Band(bandData[index].bandName, bandData[index].info, bandData[index].year, bandData[index].separation, bandData[index].members, bandData[index].instruments, bandData[index].earliermembers))
+    for (let index = 0; index < bandData.length; index++) { 
+      this.#savingBands.push(new Band(bandData[index].bandName, bandData[index].year, bandData[index].separation, bandData[index].members, bandData[index].instruments, bandData[index].earlierMembers))
 
     }
    
@@ -55,17 +55,71 @@ export default class Bands {
 
   }
 
-  printOutBand() {
+  printOutBands() {
     for (let index = 0; index < this.#savingBands.length; index++) {
-      console.log(`${index + 1} || ${this.#savingBands[index].bandName} || ${this.#savingBands[index].year} || ${this.#savingBands[index].separation} || ${this.#savingBands[index].members} || ${this.#savingBands[index].instruments} || ${this.#savingBands[index].earliermembers}`)
+      console.log(`${index + 1}. ${this.#savingBands[index].bandName}. ${this.#savingBands[index].year}. ${this.#savingBands[index].separation}. ${this.#savingBands[index].members}. ${this.#savingBands[index].instruments}. ${this.#savingBands[index].earlierMembers}`)
       
     }
   } 
 
+  printOutBandsRawInfo() {
+    for (let index = 0; index < this.#savingBands.length; index++) {
+      console.log(this.#savingBands[index].bandInfo())
 
-  addNewBand(bandName, year, separation, members, instruments, earlierMembers) {
-    this.#savingBands.push(new Band(bandName, year, separation, members, instruments, earlierMembers));
+    }
+  } 
+
+
+  
+  addNewBand() {
+    
+    const tempBand = new Band();
+    let run = true
+    //frågor till användaren om band
+    while (run) {
+      if (tempBand.bandName = prompt("What's the name of the band? ")) {
+        run = false
+      }
+    }
+    
+    
+    if (tempBand.year = prompt("What year was the band formed? ")) {
+      run = false
+    }
+    
+
+
+    if (tempBand.separation = prompt("Did the band separate? yes/no: ")) {
+      run = false
+    }
+    
+    
+
+    
+    if (tempBand.members = prompt("What are the names of the members? ")) {
+      run = false
+    }
+
+    
+
+    
+    if (tempBand.instruments = prompt("What instruments do they play? ")) {
+      run = false
+    }
+      
+    
+
+    
+    if (tempBand.earlierMembers = prompt("What's the name of the members that were a part of the band before? ")) {
+      run = false
+    }
+
+    
+
+    this.#savingBands.push();
     this.#updateJson();
+  
+    
  }
 
   
@@ -76,20 +130,17 @@ export default class Bands {
   
   
  
+  addOrDeleteMember() {
+    this.#savingBands[index].inOrOutOfBand();
+    this.#updateJson();
+  }
+
 
   getBandLength() {
     return this.#savingBands.length;
   }
 
-   /*
-  checkBandList() {
-    for (let index = 0; index < this.#savingBands.length; index++) {
-      console.log(`${index + 1}`);
-      
-    }
-  }
-  */
-  
+   
 }
 
 

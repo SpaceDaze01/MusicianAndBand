@@ -22,7 +22,7 @@ export default class Band {
 
   
   get bandName() {
-    return this.bandName;
+    return this._bandName;
 
   }
 
@@ -49,14 +49,16 @@ export default class Band {
     return this._earlierMembers;
   }
 
-
+ 
   
   set bandName(theirName) {
+    
   if (theirName.length >= 1) {
-      this._bandName = theirName;
+    this._bandName = theirName;
+    return true
     } else {
       console.log("You didn't write anything!")
-      
+    return false  
     }
   }
   
@@ -73,17 +75,19 @@ export default class Band {
     }
   }
 
-
+  
   set separation(newSeparation) {
+    
     if (newSeparation === "yes") {
-      return true
+      this._separation = newSeparation
     } else if (newSeparation === "no") {
-      return false
+      this._separation = newSeparation
     } else {
       console.log("You must answer yes or no")
+      
     }
-  }
-
+  } 
+  
   
   set members(newMembers) {   
     if (newMembers.length >= 1) {
@@ -115,7 +119,6 @@ export default class Band {
   bandInfo() {
     return {
       "bandName": this.bandName,
-      "info": this.info,
       "year": this.year,
       "separation": this.separation,
       "members": this.members,
@@ -127,7 +130,8 @@ export default class Band {
 
   }
 
-
+   
+  
 
 }
 

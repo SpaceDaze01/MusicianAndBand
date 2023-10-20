@@ -1,7 +1,5 @@
 //importerar filer
 
-import Band from "./band.js";
-import Musician from "./musician.js";
 import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
@@ -10,13 +8,11 @@ import PromptSync from "prompt-sync";
 const prompt = PromptSync({ sigint: true })
 
 
-const band = new Band();
-const musician = new Musician();
 const bands = new Bands();
 const musicians = new Musicians();
 
 
-
+//meny med 7 val
 let run = true
 
 while (run) {
@@ -39,52 +35,22 @@ Choice - `);
 
     case "1":
       
-      const newBandName = prompt("What's the name of the band? ")
-      band.bandName = newBandName;
-    
-      const newYear = prompt("What year was the band formed? ")
-      band.year = newYear;
-
-      const newSeparation = prompt("Did the band separate? yes/no: ")
-      band.separation = newSeparation;
-
-      const newMembers = prompt("What are the names of the members? ")
-      band.members = newMembers;
-
-      const newInstruments = prompt("What instruments do they play? ")
-      band.instruments = newInstruments;
-
-      const oldMembers = prompt("What's the name of the members that were a part of the band before? ")
-      band.earlierMembers = oldMembers;
+      //lägger till band
+      bands.addNewBand();
   
-
-      
-
-
       break;
   
     case "2": 
+      //lägger till musician
+      musicians.addNewMusician();
       
-
-      const newName = prompt("What's the name of the musician? ")
-      musician.theName = newName;
-
-      const newAge = prompt("How old are they? ")
-      musician.age = newAge;
-
-      const whatBand = prompt("Which band are they a part of? ")
-      musician.inBand = whatBand;
-
-      const oldMemberOf = prompt("What bands were they a part of before? ")
-      musician.bandBefore = oldMemberOf;
-    
+     
       break;
 
     
     
-    
     case "3": 
-
+     //radera band
       deleteBand();
     
       break;
@@ -93,7 +59,7 @@ Choice - `);
     
     
     case "4": 
-
+      //radera musician
       deleteMusician();
       
       break;
@@ -103,9 +69,9 @@ Choice - `);
     
     case "5":  
      
+      //få de att skriva ut lista på band
+      bands.printOutBands();
       
-      const savingBands = new Bands(bands.savingbands[0]);
-      console.log(savingBands)
       
       break;
 
@@ -113,15 +79,14 @@ Choice - `);
     
     
     case "6":  
-      
-      const savingMusicians = new Musicians(musicians.savingMusicians[0]);
-      console.log(savingMusicians)
+      //få de att skriva ut lista på musician 
+      musicians.printOutMusician();
     
       break;
     
     
     
-  
+     //avslutar programmet
     case "7": {
       console.log("You ended the program")
       run = false
@@ -131,7 +96,7 @@ Choice - `);
     
     
   
-  
+    //användaren måste skriva in en siffra mellan 1-7
     } if (choice < 0 < 8) {
       console.log("You must choose a number between 1-7!")
       run = true
@@ -143,7 +108,7 @@ Choice - `);
 
   }
 
-
+  //funktion för att radera band
   function deleteBand() {
     savingBands.printOutBand();
 
@@ -160,7 +125,7 @@ Choice - `);
     }
   }
 
-  
+  //funktion för att radera musician
   function deleteMusician() {
     savingMusicians.printOutMusician();
 

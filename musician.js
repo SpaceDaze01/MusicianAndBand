@@ -90,7 +90,6 @@ export default class Musician {
   infoMusician() {
     return {
       "theName": this.theName,
-      "someInfo": this.someInfo,
       "age": this.age,
       "inBand": this.inBand,
       "bandBefore": this.bandBefore,
