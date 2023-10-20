@@ -94,7 +94,7 @@ Choice - `);
     
     case "4": 
 
-    
+      deleteMusician();
       
       break;
 
@@ -105,7 +105,7 @@ Choice - `);
      
       
       const savingBands = new Bands(bands.savingbands[0]);
-      console.log(savingBands[0])
+      console.log(savingBands)
       
       break;
 
@@ -114,6 +114,8 @@ Choice - `);
     
     case "6":  
       
+      const savingMusicians = new Musicians(musicians.savingMusicians[0]);
+      console.log(savingMusicians)
     
       break;
     
@@ -151,7 +153,7 @@ Choice - `);
 
       console.log("You must write a number!")
     }
-    if (toDelete <= savingBands.getLength() && toDelete >= 1) {
+    if (toDelete <= savingBands.getLength() || toDelete >= 1) {
       savingBands.removeBand(Number(toDelete) - 1);
     } else {
       console.log(`The number must be between 1 and ${savingBands.getLength()}`);
@@ -159,7 +161,21 @@ Choice - `);
   }
 
   
-  
+  function deleteMusician() {
+    savingMusicians.printOutMusician();
+
+    const toDelete = prompt("Which musician do you want to delete? ");
+
+    if (Number(toDelete).toString() === NaN) {
+
+      console.log("You must write a number!")
+    }
+    if (toDelete <= savingMusicians.getLength() || toDelete >= 1) {
+      savingMusicians.removeBand(Number(toDelete) - 1);
+    } else {
+      console.log(`The number must be between 1 and ${savingMusicians.getLength()}`);
+    }
+  }
 
 }
 

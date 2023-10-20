@@ -27,7 +27,7 @@ export default class Bands {
     let temporaryBandList = [];
 
     for (let index = 0; index < this.#savingBands.length; index++) {
-      temporaryBandList.unshift(this.#savingBands[index].bandInfo());
+      temporaryBandList.push(this.#savingBands[index].bandInfo());
 
     }
 
@@ -46,7 +46,7 @@ export default class Bands {
     
 
     for (let index = 0; index < bandData.length; index++) { //test
-      this.#savingBands.unshift(new Band(bandData[index].bandName, bandData[index].info, bandData[index].year, bandData[index].separation, bandData[index].members, bandData[index].instruments, bandData[index].earliermembers))
+      this.#savingBands.push(new Band(bandData[index].bandName, bandData[index].info, bandData[index].year, bandData[index].separation, bandData[index].members, bandData[index].instruments, bandData[index].earliermembers))
 
     }
    
@@ -64,7 +64,7 @@ export default class Bands {
 
 
   addNewBand(bandName, year, separation, members, instruments, earlierMembers) {
-    this.#savingBands.unshift(new Band(bandName, year, separation, members, instruments, earlierMembers));
+    this.#savingBands.push(new Band(bandName, year, separation, members, instruments, earlierMembers));
     this.#updateJson();
  }
 
