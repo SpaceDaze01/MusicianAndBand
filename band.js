@@ -5,6 +5,7 @@
 export default class Band {
 
   
+  
 
   constructor(bandName, year, separation, members, instruments, earlierMembers) {
     this._bandName = bandName;
@@ -18,8 +19,8 @@ export default class Band {
   }
 
   
-  
 
+  
   get bandName() {
     return this.bandName;
 
@@ -49,15 +50,16 @@ export default class Band {
   }
 
 
-
+  
   set bandName(theirName) {
-    if (theirName.length >= 1) {
+  if (theirName.length >= 1) {
       this._bandName = theirName;
     } else {
       console.log("You didn't write anything!")
+      
     }
   }
-
+  
   
      
   set year(newYear) {
@@ -120,6 +122,9 @@ export default class Band {
       "instruments": this.instruments,
       "earlierMembers": this.earlierMembers
     };
+    
+
+
   }
 
 
@@ -129,6 +134,9 @@ export default class Band {
 
 
 
+
+
+  
 
 
 

@@ -1,15 +1,21 @@
 //importerar filer
 
-
 import Band from "./band.js";
 import Musician from "./musician.js";
+import Bands from "./bands.js";
+import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
 
 
 const prompt = PromptSync({ sigint: true })
 
+
 const band = new Band();
 const musician = new Musician();
+const bands = new Bands();
+const musicians = new Musicians();
+
+
 
 let run = true
 
@@ -39,7 +45,7 @@ Choice - `);
       const newYear = prompt("What year was the band formed? ")
       band.year = newYear;
 
-      const newSeparation = prompt("Did the band seperate? yes/no: ")
+      const newSeparation = prompt("Did the band separate? yes/no: ")
       band.separation = newSeparation;
 
       const newMembers = prompt("What are the names of the members? ")
@@ -51,6 +57,10 @@ Choice - `);
       const oldMembers = prompt("What's the name of the members that were a part of the band before? ")
       band.earlierMembers = oldMembers;
   
+
+      
+
+
       break;
   
     case "2": 
@@ -75,7 +85,7 @@ Choice - `);
     
     case "3": 
 
-    
+      deleteBand();
     
       break;
   
@@ -92,7 +102,10 @@ Choice - `);
     
     
     case "5":  
+     
       
+      const savingBands = new Bands(bands.savingbands[0]);
+      console.log(savingBands[0])
       
       break;
 
@@ -118,10 +131,37 @@ Choice - `);
   
   
     } if (choice < 0 < 8) {
-      console.log("Choose a number between 1-7!")
+      console.log("You must choose a number between 1-7!")
       run = true
     } break;
       
 
+
+
+
   }
+
+
+  function deleteBand() {
+    savingBands.printOutBand();
+
+    const toDelete = prompt("Which band do you want to delete? ");
+
+    if (Number(toDelete).toString() === NaN) {
+
+      console.log("You must write a number!")
+    }
+    if (toDelete <= savingBands.getLength() && toDelete >= 1) {
+      savingBands.removeBand(Number(toDelete) - 1);
+    } else {
+      console.log(`The number must be between 1 and ${savingBands.getLength()}`);
+    }
+  }
+
+  
+  
+
 }
+
+
+
