@@ -15,7 +15,7 @@ export default class Bands {
   constructor() {
     this.getBandInfo();
   }
-  
+
   get savingbands() {
     return this.savingBands;
   }
@@ -43,48 +43,48 @@ export default class Bands {
   getBandInfo() {
     const jsonString = fs.readFileSync("./saveBands.json");
     const bandData = JSON.parse(jsonString);
-    
 
-    for (let index = 0; index < bandData.length; index++) { 
+
+    for (let index = 0; index < bandData.length; index++) {
       this.savingBands.push(new Band(bandData[index].bandName, bandData[index].year, bandData[index].separation, bandData[index].members, bandData[index].instruments, bandData[index].earlierMembers))
 
     }
-   
-    
-  
+
+
+
 
   }
 
   printOutBands() {
     for (let index = 0; index < this.savingBands.length; index++) {
       console.log(`${index + 1}, ${this.savingBands[index].bandName}, ${this.savingBands[index].year}, ${this.savingBands[index].separation}, ${this.savingBands[index].members}, ${this.savingBands[index].instruments}, ${this.savingBands[index].earlierMembers}`)
-      
+
     }
-  } 
+  }
 
   printOutBandsRawInfo() {
     for (let index = 0; index < this.savingBands.length; index++) {
       console.log(this.savingBands[index].bandInfo())
 
     }
-  } 
+  }
 
 
-  
-  addNewBand() {
-    this.savingBands.push();
+
+  addNewBand(bandName, year, separation, members, instruments, earlierMembers) {
+    this.savingBands.push(new Band(bandName, year, separation, members, instruments, earlierMembers));
     this.updateJson();
-  
- }
-  
-  
+
+  }
+
+
   removeBand(index) {
     this.savingBands.splice(index, 1);
     this.updateJson();
   }
-  
-  
- 
+
+
+
   addOrDeleteMember() {
     this.savingBands[index].inOrOutOfBand();
     this.updateJson();
@@ -95,14 +95,15 @@ export default class Bands {
     return this.savingBands.length;
   }
 
-  
+  setMember(members) {
+    for (let i = 0; i < members.length; i++) {
+      const index = this.savingBands.findIndex(element => element.name === members[i]);
+      console.log("Index - ", index);
+      if (index >= 0) {
+        this.pickMember(index);
+      }
+    }
+  }
 
-  
 
-   
 }
-
-
-
-
-

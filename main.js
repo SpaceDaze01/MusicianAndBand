@@ -36,26 +36,26 @@ Choice - `);
 
 
     case "1": {
-      
+
       //lägger till band
       console.clear();
-      createOrEditBand;
-    } break;
-  
-    case "2": {
-      
-      //lägger till musician
-      console.clear();
-      createOrEditMusician;
+      createOrEditBand();
     } break;
 
-    
-    
+    case "2": {
+
+      //lägger till musician
+      console.clear();
+      createOrEditMusician();
+    } break;
+
+
+
     case "3": {
-      
+
       //radera band
       deleteBand();
-    
+
 
       //funktion för att radera band
       function deleteBand() {
@@ -74,15 +74,15 @@ Choice - `);
         }
       }
     } break;
-  
-    
-    
-    
+
+
+
+
     case "4": {
-      
+
       //radera musician
       deleteMusician();
-      
+
       //funktion för att radera musician
       function deleteMusician() {
         musicians.printOutMusician();
@@ -101,76 +101,81 @@ Choice - `);
       }
     } break;
 
-    
-    
-    
+
+
+
     case "5": {
-      
+
       //få de att skriva ut lista på band
       bands.printOutBandsRawInfo();
     } break;
 
-    
-    
-    
+
+
+
     case "6": {
       //få de att skriva ut lista på musician 
       musicians.printOutMusiciansRawInfo();
     } break;
-    
-    
-    
+
+
+
     //avslutar programmet
     case "7": {
       console.log("You ended the program")
       run = false
     } break;
     default:
-    
-    
-    
-  
+
+
+
+
       //användaren måste skriva in en siffra mellan 1-7
       if (choice < 0 < 8) {
         console.log("You must choose a number between 1-7!")
         run = true
       } break;
-      
+
   }
-  
- 
-
- 
-  function createOrEditBand() {
-   
-    let bandName = "";
-    let year = "";
-    let separation = "";
-    let members = [];
-    let instruments = [];
-    let earlierMembers = []
-    let menuText = "Menu - create band";
 
 
-    if (index >= 0) {
-      menuText = "Menu - edit band";
-      bandName = savingBands[index].bandName
-      year = savingBands[index].year
-      separation = savingBands[index].separation
-      members = savingBands[index].members
-      instruments = savingBands[index].instruments
-      earlierMembers = savingBands[index].earlierMembers
-    }
-    
-    bands.getBandInfo()
+
 
 }
 
-  
-  
+function createOrEditBand(index = -1) {
+
+
   let running = true;
   while (running) {
-    console.log(`
+
+  let bandName = "";
+  let year = "";
+  let separation = "";
+  let members = [];
+  let instruments = [];
+  let earlierMembers = []
+  let menuText = "Menu - create band";
+
+
+  if (index >= 0) {
+    menuText = "Menu - edit band";
+    bandName = savingBands[index].bandName
+    year = savingBands[index].year
+    separation = savingBands[index].separation
+    members = savingBands[index].members
+    instruments = savingBands[index].instruments
+    earlierMembers = savingBands[index].earlierMembers
+  }
+
+  
+
+
+
+
+
+
+  console.log(`
     
     1.Band name       -> ${bands.bandName}
     2.Year            -> ${bands.year}
@@ -183,115 +188,115 @@ Choice - `);
     B - go back to menu
     `);
 
-    const choices = prompt().trim().toUpperCase()
+  const choices = prompt().trim().toUpperCase()
 
 
-    switch (choices) {
-      case "1": { 
-        let run = true 
-        while (run) {
-          bands.bandName = prompt("What's the name of the band? ");
-          console.clear()
-          if (bands.bandName.length >= 1) {
-            bands.bandName;
-            run = false
-            console.clear()
-          } else {
-            console.clear()
-            console.log("You didn't write anything!")
-          
-          }
-        } break;
-        }
-       
-        
-      case "2": {
-        let run = true
-        while (run) {
-          bands.year = prompt("What year was the band formed? ");
-          console.clear()
-          if (bands.year.length === 4) {
-            bands.year;
-            run = false
-            console.clear()
-          } else if (bands.year.length < 4) {
-            console.clear()
-            console.log("You must write 4 numbers!")
-          } else if (isNaN(bands.year)) {
-            console.clear()
-            console.log("You must write numbers!")
-            
-          }
-        } break;
-        }
-      
-      case "3": {
-        let run = true
-        while (run) {
-          bands.separation = prompt("Separation, yes/no: ");
-          console.clear()
-          if (bands.separation === "yes") {
-            bands.separation;
-            run = false
-            console.clear()
-          } else if (bands.separation === "no") {
-            bands.separation;
-            run = false
-            console.clear()
-          } else {
-            console.clear()
-            console.log("You must answer yes or no")
-
-          }
-        } break;
-        }
-        
-
-      case "4": 
+  switch (choices) {
+    case "1": {
+      let run = true
+      while (run) {
+        bands.bandName = prompt("What's the name of the band? ");
         console.clear()
-        bands.members = theBandMembers(bands.members);
-        break;
-        
-      case "5": 
-        console.clear()
-        bands.instruments = bandInstruments(bands.instruments);
-        break;
-        
-      case "6": 
-        console.clear()
-        bands.earlierMembers = earlierMembersInBand(bands.earlierMembers);
-        break;
-      
-      case "S":
-        
-       
-       
-        if (createOrEditBand.index >= 0) {
-          bands.savingBands[index].bandName = bandName;
-          bands.savingBands[index].year = year;
-          bands.savingBands[index].separation = separation;
-          bands.savingBands[index].members = members;
-          bands.savingBands[index].instruments = instruments;
-          bands.savingBands[index].earlierMembers = earlierMembers;
+        if (bands.bandName.length >= 1) {
+          bands.bandName;
+          run = false
+          console.clear()
         } else {
-          bands.savingBands.push(bands.getBandInfo());
+          console.clear()
+          console.log("You didn't write anything!")
+
         }
-        bands.updateJson;
-        running = false;
-        break;
-      
-      
-      case "B": 
-        running = false;
-        console.clear()
-        break;
-      default:
-        console.clear();
-        console.log("You must choose between 1-6, S or B");
-        break;
+      } break;
     }
+
+
+    case "2": {
+      let run = true
+      while (run) {
+        bands.year = prompt("What year was the band formed? ");
+        console.clear()
+        if (bands.year.length === 4) {
+          bands.year;
+          run = false
+          console.clear()
+        } else if (bands.year.length < 4) {
+          console.clear()
+          console.log("You must write 4 numbers!")
+        } else if (isNaN(bands.year)) {
+          console.clear()
+          console.log("You must write numbers!")
+
+        }
+      } break;
+    }
+
+    case "3": {
+      let run = true
+      while (run) {
+        bands.separation = prompt("Separation, yes/no: ");
+        console.clear()
+        if (bands.separation === "yes") {
+          bands.separation;
+          run = false
+          console.clear()
+        } else if (bands.separation === "no") {
+          bands.separation;
+          run = false
+          console.clear()
+        } else {
+          console.clear()
+          console.log("You must answer yes or no")
+
+        }
+      } break;
+    }
+
+
+    case "4":
+      console.clear()
+      bands.members = theBandMembers(bands.members);
+      break;
+
+    case "5":
+      console.clear()
+      bands.instruments = bandInstruments(bands.instruments);
+      break;
+
+    case "6":
+      console.clear()
+      bands.earlierMembers = earlierMembersInBand(bands.earlierMembers);
+      break;
+
+    case "S":
+
+
+
+      if (createOrEditBand.index >= 0) {
+        bands.savingBands[index].bandName = bandName;
+        bands.savingBands[index].year = year;
+        bands.savingBands[index].separation = separation;
+        bands.savingBands[index].members = members;
+        bands.savingBands[index].instruments = instruments;
+        bands.savingBands[index].earlierMembers = earlierMembers;
+      } else {
+        bands.savingBands.push(new Bands(bands.addNewBand()));
+      }
+      bands.updateJson;
+      running = false;
+      break;
+
+
+    case "B":
+      running = false;
+      console.clear()
+      break;
+    default:
+      console.clear();
+      console.log("You must choose between 1-6, S or B");
+      break;
   }
-  console.clear();
+}
+console.clear();
   
 
 }
@@ -306,6 +311,9 @@ Choice - `);
 
 
 function theBandMembers(members = []) {
+
+  
+
   console.log("Before: ", members.list);
   let run = true
   while (run) {
@@ -329,7 +337,7 @@ function theBandMembers(members = []) {
       run = false;
     } else if (Number(choice) !== NaN) {
       console.clear();
-      if (Number(choice) > members.getBandLength()) {
+      if (Number(choice) > bands.getBandLength()) {
         console.log(`There is no member with index ${Number(choice)}`)
       } else {
         members.pickMember(Number(choice) - 1);
@@ -349,7 +357,7 @@ function theBandMembers(members = []) {
   console.clear();
 
   console.log("After: ", members.list);
-  members;
+  bands.members;
 
 }
 
@@ -380,7 +388,7 @@ function bandInstruments(instruments = []) {
       run = false;
     } else if (Number(choice) !== NaN) {
       console.clear();
-      if (Number(choice) > instruments.listLength()) {
+      if (Number(choice) > instruments.getBandLength()) {
         console.log(`There is no instrument with index ${Number(choice)}`)
       } else {
         instruments.pickMember(Number(choice) - 1);
@@ -461,7 +469,11 @@ function earlierMembersInBand(earlierMembers = []) {
 
 
 //skapa eller redigera musician
-function createOrEditMusician() {
+function createOrEditMusician(index = -1) {
+
+  let running = true;
+  while (running) {
+
 
   let theName = "";
   let age = "";
@@ -480,14 +492,9 @@ function createOrEditMusician() {
     instrument = savingBands[index].instrument
   }
 
-  musicians.getMusicianInfo();
+  
 
 
-}  
-
-
-let running = true;
-while (running) {
   console.log(`
     
     1.Musician name   -> ${musicians.theName}
@@ -521,8 +528,8 @@ while (running) {
       } break;
     }
 
-      
-      
+
+
 
     case "2": {
       let run = true
@@ -535,15 +542,15 @@ while (running) {
           console.clear()
         } else if (musicians.age < 6) {
           console.clear()
-            console.log("You need to write 6 numbers!")  
+          console.log("You need to write 6 numbers!")
         } else {
           console.clear()
           console.log("You didn't write anything!")
         }
       } break;
-    } 
-      
-     
+    }
+
+
 
     case "3": {
       let run = true
@@ -552,13 +559,14 @@ while (running) {
         console.clear()
         if (musicians.inBand.length >= 1) {
           musicians.inBand;
+          run = false
         } else {
           console.log("You didn't write anything!")
         }
       }
 
     }
-      
+
       break;
 
     case "4": {
@@ -568,49 +576,50 @@ while (running) {
         console.clear()
         if (musicians.bandBefore.length >= 1) {
           musicians.bandBefore;
+          run = false
         } else {
           console.log("You didn't write anything!")
         }
       }
 
     }
-      
+
       break;
-      
+
     case "5": {
       console.clear()
       musicians.instrument = instrumentMusician(musicians.instruments);
       break;
-    } 
-      
-      
-    
+    }
+
+
+
     case "S":
-    
+
       if (createOrEditMusician.index >= 0) {
-        savingMusicians[index].theName = theName;
-        savingMusicians[index].age = age;
-        savingMusicians[index].inBand = inBand;
-        savingMusicians[index].bandBefore = bandBefore;
-        savingMusicians[index].instrument = instrument;
+        musicians.savingMusicians[index].theName = theName;
+        musicians.savingMusicians[index].age = age;
+        musicians.savingMusicians[index].inBand = inBand;
+        musicians.savingMusicians[index].bandBefore = bandBefore;
+        musicians.savingMusicians[index].instrument = instrument;
       } else {
-        savingMusicians.push(new bands(theName, age, inBand, bandBefore, instrument));
+        musicians.saveMusicians.push(new Musicians(musicians.addNewMusician()));
       }
-      updateJSON();
+      musicians.updateJSON;
       running = false;
       break;
-    
-    
-    case "B": 
+
+
+    case "B":
       running = false;
       console.clear()
       break;
-      default:
+    default:
       console.clear();
       console.log("You must choose between 1-5, S or B");
       break;
-    
-      
+  
+  }
   }
 }
 

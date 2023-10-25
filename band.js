@@ -1,7 +1,3 @@
-
-
-
-
 export default class Band {
 
   bandName;
@@ -10,22 +6,41 @@ export default class Band {
   members;
   instruments;
   earlierMembers;
-  
+
 
   constructor(bandName, year, separation, members = [], instruments = [], earlierMembers = []) {
-    this._bandName = bandName;
-    this._year = year;
-    this._separation = separation; 
-    this._members = members; 
-    this._instruments = instruments; 
-    this._earlierMembers = earlierMembers; 
+    this.bandName = bandName;
+    this.year = year;
+    this.separation = separation;
+    this.members = members;
+    this.instruments = instruments;
+    this.earlierMembers = earlierMembers;
 
   }
-   
-  
 
-  
- 
+  get bandName() {
+    return this.bandName;
+  }
+
+  get year() {
+    return this.year;
+  }
+
+  get separation() {
+    return this.separation;
+  }
+
+  get members() {
+    return this.members;
+  }
+
+  get instruments() {
+    return this.instruments;
+  }
+
+  get earlierMembers() {
+    return this.earlierMembers;
+  }
 
 
   bandInfo() {
@@ -37,13 +52,13 @@ export default class Band {
       "instruments": this.instruments,
       "earlierMembers": this.earlierMembers
     };
-    
+
 
 
   }
 
-   
-  
+
+
 
 }
 
@@ -79,9 +94,12 @@ class EarlierMembers {
     this.earlierMembersBand = new Band();
   }
   EarlyMember() {
-  this.earlierMembersBand.earlierMembers();
+    this.earlierMembersBand.earlierMembers();
   }
 }
+
+
+
 
 
 
