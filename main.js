@@ -4,8 +4,9 @@
 import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
-
-
+import Members from "./bands.js";
+import instruments from "./bands.js";
+import earlierMembers from "./bands.js";
 
 const prompt = PromptSync({ sigint: true })
 
@@ -52,12 +53,9 @@ Choice - `);
 
 
     case "3": {
-
-      //radera band
+      console.clear();
       deleteBand();
-
-
-      //funktion för att radera band
+     //funktion för att radera band
       function deleteBand() {
         bands.printOutBandsRawInfo;
 
@@ -79,10 +77,8 @@ Choice - `);
 
 
     case "4": {
-
-      //radera musician
+      console.clear();
       deleteMusician();
-
       //funktion för att radera musician
       function deleteMusician() {
         musicians.printOutMusician();
@@ -107,15 +103,27 @@ Choice - `);
     case "5": {
 
       //få de att skriva ut lista på band
-      bands.printOutBandsRawInfo();
-    } break;
+      console.clear();
+      if (bands.printOutBandsRawInfo.length > 0) {
+        bands.printOutBands();
+      } else {
+        console.log("There is no band to show");
+      }
+      
 
+    } break;
+      
 
 
 
     case "6": {
       //få de att skriva ut lista på musician 
-      musicians.printOutMusiciansRawInfo();
+      console.clear()
+      if (musicians.printOutMusiciansRawInfo.length > 0) {
+        musicians.printOutMusician();
+      } else {
+        console.log("There is no musician to show");
+      }
     } break;
 
 
@@ -254,17 +262,17 @@ function createOrEditBand(index = -1) {
 
     case "4":
       console.clear()
-      bands.members = theBandMembers(bands.members);
+      members = theBandMembers(members);
       break;
 
     case "5":
       console.clear()
-      bands.instruments = bandInstruments(bands.instruments);
+      instruments = bandInstruments(instruments);
       break;
 
     case "6":
       console.clear()
-      bands.earlierMembers = earlierMembersInBand(bands.earlierMembers);
+      earlierMembers = earlierMembersInBand(earlierMembers);
       break;
 
     case "S":
@@ -314,6 +322,12 @@ function theBandMembers(members = []) {
 
   
 
+  if (members.length > 0) {
+    members = new Members(members);
+  } else {
+    members = new Members();
+  }
+
   console.log("Before: ", members.list);
   let run = true
   while (run) {
@@ -322,7 +336,7 @@ function theBandMembers(members = []) {
     } else {
       console.log("Menu - create band member")
     }
-    members;
+    members.printList();
     console.log(`
     A - add new member
     G - go back
@@ -337,19 +351,19 @@ function theBandMembers(members = []) {
       run = false;
     } else if (Number(choice) !== NaN) {
       console.clear();
-      if (Number(choice) > bands.getBandLength()) {
+      if (Number(choice) > members.listLength()) {
         console.log(`There is no member with index ${Number(choice)}`)
       } else {
         members.pickMember(Number(choice) - 1);
       }
     } else {
       console.clear();
-      if (members.getBandLength() === 0) {
+      if (members.listLength() === 0) {
         console.log("You must choose between A or G");
-      } else if (members.getBandLength() === 1) {
+      } else if (members.listLength() === 1) {
         console.log("You must choose between 1, A or G");
       } else {
-        console.log(`You must choose between 1 - ${members.getBandLength()}, A or G`);
+        console.log(`You must choose between 1 - ${members.listLength()}, A or G`);
       }
     }
 
@@ -357,7 +371,7 @@ function theBandMembers(members = []) {
   console.clear();
 
   console.log("After: ", members.list);
-  bands.members;
+  members.listOfPickedMembers();
 
 }
 

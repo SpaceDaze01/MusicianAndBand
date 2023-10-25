@@ -95,15 +95,145 @@ export default class Bands {
     return this.savingBands.length;
   }
 
-  setMember(members) {
-    for (let i = 0; i < members.length; i++) {
-      const index = this.savingBands.findIndex(element => element.name === members[i]);
-      console.log("Index - ", index);
-      if (index >= 0) {
-        this.pickMember(index);
-      }
+  
+
+
+  //instruments 
+  addInstrumentsToList(newInstrument) {
+    if (newInstrument.length < 3 || newInstrument.length > 25) {
+      console.log("Måste skriva in minst 3 tecken och max 25");
+    } else if (this.savingBands.includes(newInstrument)) {
+      console.log(`${newInstrument} finns redan.`);
+    } else {
+      this.savingBands.push(new Hobbie(newInstrument));
+      this.updateFile()
     }
   }
 
 
+  setInstruments(instruments) {
+    for (let i = 0; i < instruments.length; i++) {
+      const index = this.savingBands.findIndex(element => element.name === instruments[i]);
+      console.log("Index - ", index);
+      if (index >= 0) {
+        this.pickInstruments(index);
+      }
+    }
+  }
+
+  printInstrumentsList() {
+    for (let i = 0; i < this.list.length; i++) {
+      console.log(`${i + 1}. ${this.list[i].name} - ${this.list[i].picked}`);
+    }
+  }
+
+
+  pickInstruments(index) {
+    this.list[index].picked = !this.list[index].picked;
+  }
+
+
+  listInstrumentsLength() {
+    return this.list.length;
+  }
+
+  listOfPickedInstruments() {
+    const templist = [];
+
+    for (let i = 0; i < this.list.length; i++) {
+      if (this.list[i].picked) {
+        templist.push(this.list[i].name)
+      }
+    }
+    return templist;
+  } //slut instruments
+
+
+  //earliermembers
+  addOldMemberToList(oldMember) {
+    if (oldMember.length < 3 || oldMember.length > 25) {
+      console.log("Måste skriva in minst 3 tecken och max 25");
+    } else if (this.savingBands.includes(oldMember)) {
+      console.log(`${oldMember} finns redan.`);
+    } else {
+      this.savingBands.push(new Hobbie(oldMember));
+      this.updateFile()
+    }
+  }
+
+
+  setOldMember(earlierMembers) {
+    for (let i = 0; i < earlierMembers.length; i++) {
+      const index = this.savingBands.findIndex(element => element.name === earlierMembers[i]);
+      console.log("Index - ", index);
+      if (index >= 0) {
+        this.pickOldMember(index);
+      }
+    }
+  }
+
+  printOldMemberList() {
+    for (let i = 0; i < this.list.length; i++) {
+      console.log(`${i + 1}. ${this.list[i].name} - ${this.list[i].picked}`);
+    }
+  }
+
+
+  pickOldMember(index) {
+    this.list[index].picked = !this.list[index].picked;
+  }
+
+
+  listOldMemberLength() {
+    return this.list.length;
+  }
+
+  listOfPickedOldMembers() {
+    const templist = [];
+
+    for (let i = 0; i < this.list.length; i++) {
+      if (this.list[i].picked) {
+        templist.push(this.list[i].name)
+      }
+    }
+    return templist;
+  } //slut på earliermember
+
 }
+
+
+
+
+class Instruments {
+
+  name;
+  picked;
+
+  constructor(name, picked = false) {
+    this.name = name;
+    this.picked = picked;
+  }
+}
+
+
+class EarlierMembers {
+
+  name;
+  picked;
+
+  constructor(name, picked = false) {
+    this.name = name;
+    this.picked = picked;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
