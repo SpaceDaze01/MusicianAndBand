@@ -1,6 +1,7 @@
 //importera in filer 
 
-
+import Band from "./band.js";
+import Musician from "./musician.js";
 import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
@@ -179,12 +180,12 @@ function createOrEditBand(index = -1) {
 
   console.log(`
     
-    1.Band name       -> ${bands.bandName}
-    2.Year            -> ${bands.year}
-    3.Separation      -> ${bands.separation}
-    4.Members         -> ${bands.members}
-    5.Instruments     -> ${bands.instruments}
-    6.Earlier members -> ${bands.earlierMembers}
+    1.Band name       -> ${bandName}
+    2.Year            -> ${year}
+    3.Separation      -> ${separation}
+    4.Members         -> ${members}
+    5.Instruments     -> ${instruments}
+    6.Earlier members -> ${earlierMembers}
 
     S - save
     B - go back to menu
@@ -197,10 +198,10 @@ function createOrEditBand(index = -1) {
     case "1": {
       let run = true
       while (run) {
-        bands.bandName = prompt("What's the name of the band? ");
+        bandName = prompt("What's the name of the band? ");
         console.clear()
-        if (bands.bandName.length >= 1) {
-          bands.bandName;
+        if (bandName.length >= 1) {
+          bandName;
           run = false
           console.clear()
         } else {
@@ -215,16 +216,16 @@ function createOrEditBand(index = -1) {
     case "2": {
       let run = true
       while (run) {
-        bands.year = prompt("What year was the band formed? ");
+        year = prompt("What year was the band formed? ");
         console.clear()
-        if (bands.year.length === 4) {
-          bands.year;
+        if (year.length === 4) {
+          year;
           run = false
           console.clear()
-        } else if (bands.year.length < 4) {
+        } else if (year.length < 4) {
           console.clear()
           console.log("You must write 4 numbers!")
-        } else if (isNaN(bands.year)) {
+        } else if (isNaN(year)) {
           console.clear()
           console.log("You must write numbers!")
 
@@ -235,14 +236,14 @@ function createOrEditBand(index = -1) {
     case "3": {
       let run = true
       while (run) {
-        bands.separation = prompt("Separation, yes/no: ");
+        separation = prompt("Separation, yes/no: ");
         console.clear()
-        if (bands.separation === "yes") {
-          bands.separation;
+        if (separation === "yes") {
+          separation;
           run = false
           console.clear()
-        } else if (bands.separation === "no") {
-          bands.separation;
+        } else if (separation === "no") {
+          separation;
           run = false
           console.clear()
         } else {
@@ -281,7 +282,11 @@ function createOrEditBand(index = -1) {
         savingBands[index].instruments = instruments;
         savingBands[index].earlierMembers = earlierMembers;
       } else {
-        savingBands.push(new Bands(bands.addNewBand()));
+        
+          savingBands.push(new Band(bandName, year, separation, members, instruments, earlierMembers));
+          
+
+        
       }
       bands.updateJson();
       running = false;
@@ -625,7 +630,7 @@ function createOrEditMusician(index = -1) {
         musicians.savingMusicians[index].bandBefore = bandBefore;
         musicians.savingMusicians[index].instrument = instrument;
       } else {
-        musicians.saveMusicians.push(new Musicians(musicians.addNewMusician()));
+        saveMusicians.push(new Musician(theName, age, inBand, bandBefore, instrument));
       }
       musicians.updateJSON;
       running = false;
