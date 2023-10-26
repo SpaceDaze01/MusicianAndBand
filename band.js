@@ -72,7 +72,7 @@ export default class Band {
   */
 
   getFullName() {
-    return this.bandName + " " + this.year + " " + this.separation;
+    return this.bandName + " " + this.year;
   }
 
 }

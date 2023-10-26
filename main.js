@@ -11,19 +11,33 @@ import EarlierMembers from "./members.js";
 */
 import fs from "fs";
 
-const Member = new Members()
-const members = []
+
 
 const prompt = PromptSync({ sigint: true })
 const savingBands = JSON.parse(fs.readFileSync("savebands.json"));
 const saveMusicians = JSON.parse(fs.readFileSync("savemusicians.json"));
 
 
-
-
-
 const bands = new Bands();
 const musicians = new Musicians();
+
+//id
+let uniqueId = 0
+
+const a = { id: uniqueId++ };
+const b = { id: uniqueId++, aId: a.id };
+
+a.bId = b.id;
+
+const members = {
+  [a.id]: a,
+  [b.id]: b,
+};
+
+const serializedData = JSON.stringify(members);
+
+const Member = new Members()
+
 
 
 //meny med 7 val
