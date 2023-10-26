@@ -4,7 +4,7 @@
 import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
-import Members from "./bands.js";
+import Members from "./members.js";
 import instruments from "./bands.js";
 import earlierMembers from "./bands.js";
 
@@ -336,7 +336,7 @@ function theBandMembers(members = []) {
     } else {
       console.log("Menu - create band member")
     }
-    members;
+    members.printList();
     console.log(`
     A - add new member
     G - go back

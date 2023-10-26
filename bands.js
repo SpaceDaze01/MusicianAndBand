@@ -105,7 +105,7 @@ export default class Bands {
     } else if (this.savingBands.includes(newInstrument)) {
       console.log(`${newInstrument} finns redan.`);
     } else {
-      this.savingBands.push(new Hobbie(newInstrument));
+      this.savingBands.push(new Instruments(newInstrument));
       this.updateFile()
     }
   }
@@ -156,7 +156,7 @@ export default class Bands {
     } else if (this.savingBands.includes(oldMember)) {
       console.log(`${oldMember} finns redan.`);
     } else {
-      this.savingBands.push(new Hobbie(oldMember));
+      this.savingBands.push(new EarlierMembers(oldMember));
       this.updateFile()
     }
   }
