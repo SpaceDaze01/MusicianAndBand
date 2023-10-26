@@ -336,7 +336,7 @@ function theBandMembers(members = []) {
     } else {
       console.log("Menu - create band member")
     }
-    members.printList();
+    members;
     console.log(`
     A - add new member
     G - go back

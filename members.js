@@ -61,7 +61,7 @@ export default class Members {
     return this.list.length;
   }
 
-  listOfPickedHobbies() {
+  listOfPickedMembers() {
     const templist = [];
 
     for (let i = 0; i < this.list.length; i++) {
