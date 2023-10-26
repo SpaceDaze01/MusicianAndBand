@@ -371,10 +371,12 @@ function theBandMembers(tempMembers = []) {
 
 
 
-function bandInstruments(instruments = []) {
+function bandInstruments(tempInstruments = []) {
 
-  if (instruments.length > 0) {
-    instruments = new Instruments(instruments);
+  let instruments;
+
+  if (tempInstruments.length > 0) {
+    instruments = new Instruments(tempInstruments);
   } else {
     instruments = new Instruments();
   }
@@ -430,11 +432,12 @@ function bandInstruments(instruments = []) {
 
 
 
-function earlierMembersInBand(earlierMembers = []) {
+function earlierMembersInBand(tempEarlierMembers = []) {
 
+  let earlierMembers;
 
-  if (earlierMembers.length > 0) {
-    earlierMembers = new EarlierMembers(earlierMembers);
+  if (tempEarlierMembers.length > 0) {
+    earlierMembers = new EarlierMembers(tempEarlierMembers);
   } else {
     earlierMembers = new EarlierMembers();
   }
