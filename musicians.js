@@ -81,7 +81,7 @@ export default class Musicians {
 
 
 
-  addOrDeleteMusicianr() {
+  addOrDeleteMusician() {
     this.saveMusicians[index].inOrOutMusician();
     this.updateJSON();
   }

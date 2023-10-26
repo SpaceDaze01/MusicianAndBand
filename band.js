@@ -1,23 +1,34 @@
+
+
 export default class Band {
 
+  musicianId;
   bandName;
   year;
+  /*
   separation;
-  members;
+  */
+  members = []
+  /*
   instruments;
   earlierMembers;
+  */
 
-
-  constructor(bandName, year, separation, members = [], instruments = [], earlierMembers = []) {
+  constructor(musicianId, bandName, year, /*separation members = [], instruments = [], earlierMembers = []*/) {
+    
+    this.musicianId = musicianId;
     this.bandName = bandName;
     this.year = year;
+
+    /*
     this.separation = separation;
+    
     this.members = members;
     this.instruments = instruments;
     this.earlierMembers = earlierMembers;
-
+    */
   }
-
+/*
   get bandName() {
     return this.bandName;
   }
@@ -48,18 +59,23 @@ export default class Band {
       "bandName": this.bandName,
       "year": this.year,
       "separation": this.separation,
+      
       "members": this.members,
       "instruments": this.instruments,
       "earlierMembers": this.earlierMembers
+      
     };
-
-
+    
+  
 
   }
+  */
 
-
-
+  getFullName() {
+    return this.bandName + " " + this.year + " " + this.separation;
+  }
 
 }
+
 
 

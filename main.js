@@ -1,18 +1,26 @@
 //importera in filer 
 
-
+import Members from "./members.js";
 import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
+/*
 import Members from "./members.js";
 import Instruments from "./members.js";
 import EarlierMembers from "./members.js";
+*/
 import fs from "fs";
 
+const Member = new Members()
+const members = []
 
 const prompt = PromptSync({ sigint: true })
 const savingBands = JSON.parse(fs.readFileSync("savebands.json"));
 const saveMusicians = JSON.parse(fs.readFileSync("savemusicians.json"));
+
+
+
+
 
 const bands = new Bands();
 const musicians = new Musicians();
@@ -326,7 +334,7 @@ console.clear();
 
 
 
-
+/*
 function theBandMembers(tempMembers = []) {
 
   let members;
@@ -503,7 +511,7 @@ function earlierMembersInBand(tempEarlierMembers = []) {
   earlierMembers.listOfPickedOldMembers();
 
 }
-
+*/
 
 
 
