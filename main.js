@@ -12,7 +12,7 @@ import fs from "fs";
 
 const prompt = PromptSync({ sigint: true })
 const savingBands = JSON.parse(fs.readFileSync("savebands.json"));
-
+const saveMusicians = JSON.parse(fs.readFileSync("savemusicians.json"));
 
 const bands = new Bands();
 const musicians = new Musicians();
@@ -507,11 +507,11 @@ function createOrEditMusician(index = -1) {
 
   if (index >= 0) {
     menuText = "Menu - edit musician";
-    theName = savingBands[index].theName
-    age = savingBands[index].age
-    inBand = savingBands[index].inBand
-    bandBefore = savingBands[index].bandBefore
-    instrument = savingBands[index].instrument
+    theName = saveMusicians[index].theName
+    age = saveMusicians[index].age
+    inBand = saveMusicians[index].inBand
+    bandBefore = saveMusicians[index].bandBefore
+    instrument = saveMusicians[index].instrument
   }
 
   
