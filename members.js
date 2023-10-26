@@ -91,7 +91,11 @@ class Member {
 
 
 
-class instruments {
+
+
+
+
+export class instruments {
 
   //instruments 
   addInstrumentsToList(newInstrument) {
@@ -161,7 +165,7 @@ class Instrument {
 
 
 
-class EarlierMembers {
+export class EarlierMembers {
 //earliermembers
 addOldMemberToList(oldMember) {
   if (oldMember.length < 3 || oldMember.length > 25) {

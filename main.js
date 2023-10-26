@@ -5,7 +5,8 @@ import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
 import Members from "./members.js";
-
+import Instruments from "./members.js";
+import EarlierMembers from "./members.js";
 
 const prompt = PromptSync({ sigint: true })
 
@@ -369,6 +370,13 @@ function theBandMembers(members = []) {
 
 function bandInstruments(instruments = []) {
 
+  if (instruments.length > 0) {
+    instruments = new Instruments(instruments);
+  } else {
+    instruments = new Instruments();
+  }
+  
+
   console.log("Before: ", instruments.list);
   let run = true
   while (run) {
@@ -420,6 +428,13 @@ function bandInstruments(instruments = []) {
 
 
 function earlierMembersInBand(earlierMembers = []) {
+
+
+  if (earlierMembers.length > 0) {
+    earlierMembers = new EarlierMembers(earlierMembers);
+  } else {
+    earlierMembers = new EarlierMembers();
+  }
 
   console.log("Before: ", earlierMembers.list);
   let run = true
