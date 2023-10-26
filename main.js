@@ -58,22 +58,7 @@ Choice - `);
     case "3": {
       console.clear();
       deleteBand();
-     //funktion för att radera band
-      function deleteBand() {
-        bands.printOutBandsRawInfo;
-
-        const toDelete = prompt("Which band do you want to delete? ");
-
-        if (Number(toDelete).toString() === NaN) {
-
-          console.log("You must write a number!")
-        }
-        if (toDelete <= bands.getBandLength() || toDelete >= 1) {
-          bands.removeBand(Number(toDelete) - 1);
-        } else {
-          console.log(`The number must be between 1 and ${bands.getBandLength()}`);
-        }
-      }
+    
     } break;
 
 
@@ -82,22 +67,7 @@ Choice - `);
     case "4": {
       console.clear();
       deleteMusician();
-      //funktion för att radera musician
-      function deleteMusician() {
-        musicians.printOutMusician();
-
-        const toDelete = prompt("Which musician do you want to delete? ");
-
-        if (Number(toDelete).toString() === NaN) {
-
-          console.log("You must write a number!")
-        }
-        if (toDelete <= musicians.getMusicianLength() || toDelete >= 1) {
-          musicians.removeMusician(Number(toDelete) - 1);
-        } else {
-          console.log(`The number must be between 1 and ${musicians.getMusicianLength()}`);
-        }
-      }
+      
     } break;
 
 
@@ -143,6 +113,51 @@ Choice - `);
 
 
 }
+
+
+
+//funktion för att radera band
+function deleteBand() {
+  bands.printOutBandsRawInfo;
+
+  const toDelete = prompt("Which band do you want to delete? ");
+
+  if (Number(toDelete).toString() === NaN) {
+
+    console.log("You must write a number!")
+  }
+  if (toDelete <= bands.getBandLength() || toDelete >= 1) {
+    bands.removeBand(Number(toDelete) - 1);
+  } else {
+    console.log(`The number must be between 1 and ${bands.getBandLength()}`);
+  }
+}
+
+
+
+
+
+//funktion för att radera musician
+function deleteMusician() {
+  musicians.printOutMusician();
+
+  const toDelete = prompt("Which musician do you want to delete? ");
+
+  if (Number(toDelete).toString() === NaN) {
+
+    console.log("You must write a number!")
+  }
+  if (toDelete <= musicians.getMusicianLength() || toDelete >= 1) {
+    musicians.removeMusician(Number(toDelete) - 1);
+  } else {
+    console.log(`The number must be between 1 and ${musicians.getMusicianLength()}`);
+  }
+}
+
+
+
+
+
 
 function createOrEditBand(index = -1) {
 
