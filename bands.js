@@ -31,7 +31,7 @@ export default class Bands {
 
     }
 
-    fs.writeFileSync('./saveBands.json', JSON.stringify(temporaryBandList, null, 2), (error) => {
+    fs.writeFileSync('./savebands.json', JSON.stringify(temporaryBandList, null, 2), (error) => {
       if (error) throw error;
       console.log("data has been written to file")
     });
@@ -41,7 +41,7 @@ export default class Bands {
 
   //läser in alla band
   getBandInfo() {
-    const jsonString = fs.readFileSync("./saveBands.json");
+    const jsonString = fs.readFileSync("./savebands.json");
     const bandData = JSON.parse(jsonString);
 
 
@@ -101,9 +101,9 @@ export default class Bands {
   //instruments 
   addInstrumentsToList(newInstrument) {
     if (newInstrument.length < 3 || newInstrument.length > 25) {
-      console.log("Måste skriva in minst 3 tecken och max 25");
+      console.log("You must write between 2-20 symbols!");
     } else if (this.savingBands.includes(newInstrument)) {
-      console.log(`${newInstrument} finns redan.`);
+      console.log(`${newInstrument} already exists!`);
     } else {
       this.savingBands.push(new Instruments(newInstrument));
       this.updateFile()
@@ -152,9 +152,9 @@ export default class Bands {
   //earliermembers
   addOldMemberToList(oldMember) {
     if (oldMember.length < 3 || oldMember.length > 25) {
-      console.log("Måste skriva in minst 3 tecken och max 25");
+      console.log("You must write between 2-20 symbols!");
     } else if (this.savingBands.includes(oldMember)) {
-      console.log(`${oldMember} finns redan.`);
+      console.log(`${oldMember} already exists!`);
     } else {
       this.savingBands.push(new EarlierMembers(oldMember));
       this.updateFile()

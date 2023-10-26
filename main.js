@@ -5,8 +5,7 @@ import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
 import Members from "./members.js";
-import instruments from "./bands.js";
-import earlierMembers from "./bands.js";
+
 
 const prompt = PromptSync({ sigint: true })
 
@@ -147,6 +146,7 @@ function createOrEditBand(index = -1) {
   let running = true;
   while (running) {
 
+    
   let bandName = "";
   let year = "";
   let separation = "";
@@ -676,3 +676,5 @@ function instrumentMusician(instrument = []) {
   instrument;
 
 }
+
+
