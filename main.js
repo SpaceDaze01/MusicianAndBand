@@ -7,9 +7,12 @@ import PromptSync from "prompt-sync";
 import Members from "./members.js";
 import Instruments from "./members.js";
 import EarlierMembers from "./members.js";
+import fs from "fs";
+
 
 const prompt = PromptSync({ sigint: true })
-
+const savingBands = JSON.parse(fs.readFileSync("savebands.json"));
+const saveMusicians = JSON.parse(fs.readFileSync("savemusicians.json"));
 
 const bands = new Bands();
 const musicians = new Musicians();
@@ -271,16 +274,16 @@ function createOrEditBand(index = -1) {
 
 
       if (createOrEditBand.index >= 0) {
-        bands.savingBands[index].bandName = bandName;
-        bands.savingBands[index].year = year;
-        bands.savingBands[index].separation = separation;
-        bands.savingBands[index].members = members;
-        bands.savingBands[index].instruments = instruments;
-        bands.savingBands[index].earlierMembers = earlierMembers;
+        savingBands[index].bandName = bandName;
+        savingBands[index].year = year;
+        savingBands[index].separation = separation;
+        savingBands[index].members = members;
+        savingBands[index].instruments = instruments;
+        savingBands[index].earlierMembers = earlierMembers;
       } else {
-        bands.savingBands.push(new Bands(bands.addNewBand()));
+        savingBands.push(new Bands(bands.addNewBand()));
       }
-      bands.updateJson;
+      bands.updateJson();
       running = false;
       break;
 
@@ -420,7 +423,7 @@ function bandInstruments(instruments = []) {
   console.clear();
 
   console.log("After: ", instruments.list);
-  instruments;
+  instruments.listOfPickedInstruments();
 
 }
 
@@ -479,7 +482,7 @@ function earlierMembersInBand(earlierMembers = []) {
   console.clear();
 
   console.log("After: ", earlierMembers.list);
-  earlierMembers;
+  earlierMembers.listOfPickedOldMembers();
 
 }
 
@@ -499,16 +502,16 @@ function createOrEditMusician(index = -1) {
   let inBand = "";
   let bandBefore = "";
   let instrument = [];
-  let menuText = "Menu - create musician";
+  let menuText = "Menu - create musician\n";
 
 
   if (index >= 0) {
-    menuText = "Menu - edit musician";
-    theName = savingBands[index].theName
-    age = savingBands[index].age
-    inBand = savingBands[index].inBand
-    bandBefore = savingBands[index].bandBefore
-    instrument = savingBands[index].instrument
+    menuText = "Menu - edit musician\n";
+    theName = saveMusicians[index].theName
+    age = saveMusicians[index].age
+    inBand = saveMusicians[index].inBand
+    bandBefore = saveMusicians[index].bandBefore
+    instrument = saveMusicians[index].instrument
   }
 
   
@@ -635,7 +638,7 @@ function createOrEditMusician(index = -1) {
       break;
     default:
       console.clear();
-      console.log("You must choose between 1-5, S or B");
+      console.log("You must choose between 1-5, S or B. \n");
       break;
   
   }

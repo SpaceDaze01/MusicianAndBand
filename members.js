@@ -120,7 +120,7 @@ export class instruments {
     }
   }
 
-  printInstrumentsList() {
+  printList() {
     for (let i = 0; i < this.list.length; i++) {
       console.log(`${i + 1}. ${this.list[i].name} - ${this.list[i].picked}`);
     }
@@ -189,7 +189,7 @@ setOldMember(earlierMembers) {
   }
 }
 
-printOldMemberList() {
+printList() {
   for (let i = 0; i < this.list.length; i++) {
     console.log(`${i + 1}. ${this.list[i].name} - ${this.list[i].picked}`);
   }
