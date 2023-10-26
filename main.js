@@ -649,7 +649,17 @@ function createOrEditMusician(index = -1) {
 }
 
 
-function instrumentMusician(instrument = []) {
+function instrumentMusician(tempInstrument = []) {
+
+  let instrument;
+
+
+  if (tempInstrument.length > 0) {
+    instrument = new EarlierMembers(tempInstrument);
+  } else {
+    instrument = new EarlierMembers();
+  }
+
 
   console.log("Before: ", instrument.list);
   let run = true
