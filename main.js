@@ -104,13 +104,7 @@ Choice - `);
 
       //få de att skriva ut lista på band
       console.clear();
-      if (bands.printOutBandsRawInfo.length > 0) {
-        bands.printOutBands();
-      } else {
-        console.log("There is no band to show");
-      }
-      
-
+      bands.printOutBandsRawInfo();
     } break;
       
 
@@ -119,11 +113,7 @@ Choice - `);
     case "6": {
       //få de att skriva ut lista på musician 
       console.clear()
-      if (musicians.printOutMusiciansRawInfo.length > 0) {
-        musicians.printOutMusician();
-      } else {
-        console.log("There is no musician to show");
-      }
+      musicians.printOutMusiciansRawInfo();
     } break;
 
 
