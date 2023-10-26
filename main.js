@@ -172,11 +172,11 @@ function createOrEditBand(index = -1) {
   let members = [];
   let instruments = [];
   let earlierMembers = []
-  let menuText = "Menu - create band";
+  let menuText = "Menu - create band.\d";
 
 
   if (index >= 0) {
-    menuText = "Menu - edit band";
+    menuText = "Menu - edit band.\d";
     bandName = savingBands[index].bandName
     year = savingBands[index].year
     separation = savingBands[index].separation
@@ -192,14 +192,14 @@ function createOrEditBand(index = -1) {
 
 
 
-  console.log(`
+    console.log(` ${menuText}
     
-    1.Band name       -> ${bands.bandName}
-    2.Year            -> ${bands.year}
-    3.Separation      -> ${bands.separation}
-    4.Members         -> ${bands.members}
-    5.Instruments     -> ${bands.instruments}
-    6.Earlier members -> ${bands.earlierMembers}
+    1.Band name       -> ${bandName}
+    2.Year            -> ${year}
+    3.Separation      -> ${separation}
+    4.Members         -> ${members}
+    5.Instruments     -> ${instruments}
+    6.Earlier members -> ${earlierMembers}
 
     S - save
     B - go back to menu
@@ -212,10 +212,10 @@ function createOrEditBand(index = -1) {
     case "1": {
       let run = true
       while (run) {
-        bands.bandName = prompt("What's the name of the band? ");
+        bandName = prompt("What's the name of the band? ");
         console.clear()
-        if (bands.bandName.length >= 1) {
-          bands.bandName;
+        if (bandName.length >= 1) {
+          bandName;
           run = false
           console.clear()
         } else {
@@ -230,16 +230,16 @@ function createOrEditBand(index = -1) {
     case "2": {
       let run = true
       while (run) {
-        bands.year = prompt("What year was the band formed? ");
+        year = prompt("What year was the band formed? ");
         console.clear()
-        if (bands.year.length === 4) {
-          bands.year;
+        if (year.length === 4) {
+          year;
           run = false
           console.clear()
-        } else if (bands.year.length < 4) {
+        } else if (year.length < 4) {
           console.clear()
           console.log("You must write 4 numbers!")
-        } else if (isNaN(bands.year)) {
+        } else if (isNaN(year)) {
           console.clear()
           console.log("You must write numbers!")
 
@@ -250,14 +250,14 @@ function createOrEditBand(index = -1) {
     case "3": {
       let run = true
       while (run) {
-        bands.separation = prompt("Separation, yes/no: ");
+        separation = prompt("Separation, yes/no: ");
         console.clear()
-        if (bands.separation === "yes") {
-          bands.separation;
+        if (separation === "yes") {
+          separation;
           run = false
           console.clear()
-        } else if (bands.separation === "no") {
-          bands.separation;
+        } else if (separation === "no") {
+          separation;
           run = false
           console.clear()
         } else {
@@ -289,14 +289,14 @@ function createOrEditBand(index = -1) {
 
 
       if (createOrEditBand.index >= 0) {
-        bands.savingBands[index].bandName = bandName;
-        bands.savingBands[index].year = year;
-        bands.savingBands[index].separation = separation;
-        bands.savingBands[index].members = members;
-        bands.savingBands[index].instruments = instruments;
-        bands.savingBands[index].earlierMembers = earlierMembers;
+        savingBands[index].bandName = bandName;
+        savingBands[index].year = year;
+        savingBands[index].separation = separation;
+        savingBands[index].members = members;
+        savingBands[index].instruments = instruments;
+        savingBands[index].earlierMembers = earlierMembers;
       } else {
-        bands.savingBands.push(new Bands(bands.addNewBand()));
+        savingBands.push(new Bands(bands.addNewBand()));
       }
       bands.updateJson;
       running = false;
@@ -309,7 +309,7 @@ function createOrEditBand(index = -1) {
       break;
     default:
       console.clear();
-      console.log("You must choose between 1-6, S or B");
+      console.log("You must choose between 1-6, S or B. \d");
       break;
   }
 }
@@ -368,11 +368,11 @@ function theBandMembers(tempMembers = []) {
     } else {
       console.clear();
       if (members.listLength() === 0) {
-        console.log("You must choose between A or G");
+        console.log("You must choose between A or G. \d");
       } else if (members.listLength() === 1) {
-        console.log("You must choose between 1, A or G");
+        console.log("You must choose between 1, A or G. \d");
       } else {
-        console.log(`You must choose between 1 - ${members.listLength()}, A or G`);
+        console.log(`You must choose between 1 - ${members.listLength()}, A or G. \d`);
       }
     }
 
@@ -428,11 +428,11 @@ function bandInstruments(tempInstruments = []) {
     } else {
       console.clear();
       if (instruments.listLength() === 0) {
-        console.log("You must choose between A or G");
+        console.log("You must choose between A or G. \d");
       } else if (instruments.listLength() === 1) {
-        console.log("You must choose between 1, A or G");
+        console.log("You must choose between 1, A or G. \d");
       } else {
-        console.log(`You must choose between 1 - ${instruments.listLength()}, A or G`);
+        console.log(`You must choose between 1 - ${instruments.listLength()}, A or G. \d`);
       }
     }
 
@@ -488,11 +488,11 @@ function earlierMembersInBand(tempEarlierMembers = []) {
     } else {
       console.clear();
       if (earlierMembers.listLength() === 0) {
-        console.log("You must choose between A or G");
+        console.log("You must choose between A or G. \d");
       } else if (earlierMembers.listLength() === 1) {
-        console.log("You must choose between 1, A or G");
+        console.log("You must choose between 1, A or G. \d");
       } else {
-        console.log(`You must choose between 1 - ${earlierMembers.listLength()}, A or G`);
+        console.log(`You must choose between 1 - ${earlierMembers.listLength()}, A or G. \d`);
       }
     }
 
@@ -520,11 +520,11 @@ function createOrEditMusician(index = -1) {
   let inBand = "";
   let bandBefore = "";
   let instrument = [];
-  let menuText = "Menu - create musician";
+  let textMenu = "Menu - create musician.\n";
 
 
   if (index >= 0) {
-    menuText = "Menu - edit musician";
+    textMenu = "Menu - edit musician.\n";
     theName = saveMusicians[index].theName
     age = saveMusicians[index].age
     inBand = saveMusicians[index].inBand
@@ -535,13 +535,13 @@ function createOrEditMusician(index = -1) {
   
 
 
-  console.log(`
+    console.log(` ${textMenu}
     
-    1.Musician name   -> ${musicians.theName}
-    2.Age             -> ${musicians.age}
-    3.In band         -> ${musicians.inBand}
-    4.Band before     -> ${musicians.bandBefore}
-    5.Instrument      -> ${musicians.instrument}
+    1.Musician name   -> ${theName}
+    2.Age             -> ${age}
+    3.In band         -> ${inBand}
+    4.Band before     -> ${bandBefore}
+    5.Instrument      -> ${instrument}
     
     S - save
     B - go back to menu
@@ -555,10 +555,10 @@ function createOrEditMusician(index = -1) {
     case "1": {
       let run = true
       while (run) {
-        musicians.theName = prompt("What's the name of the musician? ");
+        theName = prompt("What's the name of the musician? ");
         console.clear()
-        if (musicians.theName.length >= 1) {
-          musicians.theName;
+        if (theName.length >= 1) {
+          theName;
           run = false
           console.clear()
         } else {
@@ -574,13 +574,13 @@ function createOrEditMusician(index = -1) {
     case "2": {
       let run = true
       while (run) {
-        musicians.age = prompt("Which date were they born? DD-MM-YY: ");
+        age = prompt("Which date were they born? DD-MM-YY: ");
         console.clear()
-        if (musicians.age.length === 6) {
-          musicians.age;
+        if (age.length === 6) {
+          age;
           run = false
           console.clear()
-        } else if (musicians.age < 6) {
+        } else if (age < 6) {
           console.clear()
           console.log("You need to write 6 numbers!")
         } else {
@@ -595,10 +595,10 @@ function createOrEditMusician(index = -1) {
     case "3": {
       let run = true
       while (run) {
-        musicians.inBand = prompt("Which band are they a part of? ");
+        inBand = prompt("Which band are they a part of? ");
         console.clear()
-        if (musicians.inBand.length >= 1) {
-          musicians.inBand;
+        if (inBand.length >= 1) {
+          inBand;
           run = false
         } else {
           console.log("You didn't write anything!")
@@ -612,10 +612,10 @@ function createOrEditMusician(index = -1) {
     case "4": {
       let run = true
       while (run) {
-        musicians.bandBefore = prompt("Were they a part of another band before? If yes, Which band? ");
+        bandBefore = prompt("Were they a part of another band before? If yes, Which band? ");
         console.clear()
-        if (musicians.bandBefore.length >= 1) {
-          musicians.bandBefore;
+        if (bandBefore.length >= 1) {
+          bandBefore;
           run = false
         } else {
           console.log("You didn't write anything!")
@@ -628,7 +628,7 @@ function createOrEditMusician(index = -1) {
 
     case "5": {
       console.clear()
-      musicians.instrument = instrumentMusician(musicians.instruments);
+      instrument = instrumentMusician(instrument);
       break;
     }
 
@@ -656,7 +656,7 @@ function createOrEditMusician(index = -1) {
       break;
     default:
       console.clear();
-      console.log("You must choose between 1-5, S or B");
+      console.log("You must choose between 1-5, S or B. \n");
       break;
   
   }
@@ -707,11 +707,11 @@ function instrumentMusician(tempInstrument = []) {
     } else {
       console.clear();
       if (instrument.listLength() === 0) {
-        console.log("You must choose between A or G");
+        console.log("You must choose between A or G. \n");
       } else if (instrument.listLength() === 1) {
-        console.log("You must choose between 1, A or G");
+        console.log("You must choose between 1, A or G. \n");
       } else {
-        console.log(`You must choose between 1 - ${instrument.listLength()}, A or G`);
+        console.log(`You must choose between 1 - ${instrument.listLength()}, A or G. \n`);
       }
     }
 
