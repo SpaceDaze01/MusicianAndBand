@@ -1,7 +1,6 @@
 //importera in filer 
 
-import Band from "./band.js";
-import Musician from "./musician.js";
+
 import Bands from "./bands.js";
 import Musicians from "./musicians.js";
 import PromptSync from "prompt-sync";
@@ -13,7 +12,7 @@ import fs from "fs";
 
 const prompt = PromptSync({ sigint: true })
 const savingBands = JSON.parse(fs.readFileSync("savebands.json"));
-const saveMusicians = JSON.parse(fs.readFileSync("savemusicians.json"));
+
 
 const bands = new Bands();
 const musicians = new Musicians();
@@ -180,12 +179,12 @@ function createOrEditBand(index = -1) {
 
   console.log(`
     
-    1.Band name       -> ${bandName}
-    2.Year            -> ${year}
-    3.Separation      -> ${separation}
-    4.Members         -> ${members}
-    5.Instruments     -> ${instruments}
-    6.Earlier members -> ${earlierMembers}
+    1.Band name       -> ${bands.bandName}
+    2.Year            -> ${bands.year}
+    3.Separation      -> ${bands.separation}
+    4.Members         -> ${bands.members}
+    5.Instruments     -> ${bands.instruments}
+    6.Earlier members -> ${bands.earlierMembers}
 
     S - save
     B - go back to menu
@@ -198,10 +197,10 @@ function createOrEditBand(index = -1) {
     case "1": {
       let run = true
       while (run) {
-        bandName = prompt("What's the name of the band? ");
+        bands.bandName = prompt("What's the name of the band? ");
         console.clear()
-        if (bandName.length >= 1) {
-          bandName;
+        if (bands.bandName.length >= 1) {
+          bands.bandName;
           run = false
           console.clear()
         } else {
@@ -216,16 +215,16 @@ function createOrEditBand(index = -1) {
     case "2": {
       let run = true
       while (run) {
-        year = prompt("What year was the band formed? ");
+        bands.year = prompt("What year was the band formed? ");
         console.clear()
-        if (year.length === 4) {
-          year;
+        if (bands.year.length === 4) {
+          bands.year;
           run = false
           console.clear()
-        } else if (year.length < 4) {
+        } else if (bands.year.length < 4) {
           console.clear()
           console.log("You must write 4 numbers!")
-        } else if (isNaN(year)) {
+        } else if (isNaN(bands.year)) {
           console.clear()
           console.log("You must write numbers!")
 
@@ -236,14 +235,14 @@ function createOrEditBand(index = -1) {
     case "3": {
       let run = true
       while (run) {
-        separation = prompt("Separation, yes/no: ");
+        bands.separation = prompt("Separation, yes/no: ");
         console.clear()
-        if (separation === "yes") {
-          separation;
+        if (bands.separation === "yes") {
+          bands.separation;
           run = false
           console.clear()
-        } else if (separation === "no") {
-          separation;
+        } else if (bands.separation === "no") {
+          bands.separation;
           run = false
           console.clear()
         } else {
@@ -275,20 +274,16 @@ function createOrEditBand(index = -1) {
 
 
       if (createOrEditBand.index >= 0) {
-        savingBands[index].bandName = bandName;
-        savingBands[index].year = year;
-        savingBands[index].separation = separation;
-        savingBands[index].members = members;
-        savingBands[index].instruments = instruments;
-        savingBands[index].earlierMembers = earlierMembers;
+        bands.savingBands[index].bandName = bandName;
+        bands.savingBands[index].year = year;
+        bands.savingBands[index].separation = separation;
+        bands.savingBands[index].members = members;
+        bands.savingBands[index].instruments = instruments;
+        bands.savingBands[index].earlierMembers = earlierMembers;
       } else {
-        
-          savingBands.push(new Band(bandName, year, separation, members, instruments, earlierMembers));
-          
-
-        
+        bands.savingBands.push(new Bands(bands.addNewBand()));
       }
-      bands.updateJson();
+      bands.updateJson;
       running = false;
       break;
 
@@ -317,12 +312,12 @@ console.clear();
 
 
 
-function theBandMembers(members = []) {
+function theBandMembers(tempMembers = []) {
 
-  
+  let members;
 
-  if (members.length > 0) {
-    members = new Members(members);
+  if (tempMembers.length > 0) {
+    members = new Members(tempMembers);
   } else {
     members = new Members();
   }
@@ -507,16 +502,16 @@ function createOrEditMusician(index = -1) {
   let inBand = "";
   let bandBefore = "";
   let instrument = [];
-  let menuText = "Menu - create musician\n";
+  let menuText = "Menu - create musician";
 
 
   if (index >= 0) {
-    menuText = "Menu - edit musician\n";
-    theName = saveMusicians[index].theName
-    age = saveMusicians[index].age
-    inBand = saveMusicians[index].inBand
-    bandBefore = saveMusicians[index].bandBefore
-    instrument = saveMusicians[index].instrument
+    menuText = "Menu - edit musician";
+    theName = savingBands[index].theName
+    age = savingBands[index].age
+    inBand = savingBands[index].inBand
+    bandBefore = savingBands[index].bandBefore
+    instrument = savingBands[index].instrument
   }
 
   
@@ -630,7 +625,7 @@ function createOrEditMusician(index = -1) {
         musicians.savingMusicians[index].bandBefore = bandBefore;
         musicians.savingMusicians[index].instrument = instrument;
       } else {
-        saveMusicians.push(new Musician(theName, age, inBand, bandBefore, instrument));
+        musicians.saveMusicians.push(new Musicians(musicians.addNewMusician()));
       }
       musicians.updateJSON;
       running = false;
@@ -643,7 +638,7 @@ function createOrEditMusician(index = -1) {
       break;
     default:
       console.clear();
-      console.log("You must choose between 1-5, S or B. \n");
+      console.log("You must choose between 1-5, S or B");
       break;
   
   }

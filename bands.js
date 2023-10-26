@@ -72,7 +72,11 @@ export default class Bands {
 
 
 
- 
+  addNewBand(bandName, year, separation, members, instruments, earlierMembers) {
+    this.savingBands.push(new Band(bandName, year, separation, members, instruments, earlierMembers));
+    this.updateJson();
+
+  }
 
 
   removeBand(index) {

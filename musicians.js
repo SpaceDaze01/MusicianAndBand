@@ -65,7 +65,14 @@ export default class Musicians {
     }
   }
 
-  
+  addNewMusician(theName, age, inBand, bandbefore, instruments) {
+    this.saveMusicians.push(new Musician(theName, age, inBand, bandbefore, instruments));
+    this.updateJSON();
+
+  }
+
+
+
 
   removeMusician(index) {
     this.saveMusicians.splice(index, 1);
