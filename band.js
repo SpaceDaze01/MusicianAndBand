@@ -52,8 +52,7 @@ export default class Band {
   get earlierMembers() {
     return this.earlierMembers;
   }
-
-
+  */
   bandInfo() {
     return {
       "bandName": this.bandName,
@@ -69,7 +68,7 @@ export default class Band {
   
 
   }
-  */
+  
 
   getFullName() {
     return this.bandName + " " + this.year;
